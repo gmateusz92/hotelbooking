@@ -1,0 +1,36 @@
+{% extends 'hotel/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section" >
+<!-- Book Now Modal -->
+<h2 class="modal-title text-center pb-4 mb-5 mt-5 ">Book Now</h2>
+<form>
+<fieldset class="form-group" style="width: 600px; margin: auto;">
+<div class="form-group form-row">
+<div class="form-group col">
+<label class="col-form-label" for="check-in">Check In</label>
+<input class="form-control" type="date" id="check-in" value="2021-08-24">
+</div><!-- form-group -->
+<div class="form-group col">
+<label class="col-form-label" for="check-out">Check Out</label>
+<input class="form-control" type="date" id="check-out" value="2021-08-25">
+</div><!-- form-group -->
+</div><!-- form-group -->
+<div class="form-group row w-100 mx-auto">
+<label class="col-form-label">Room</label>
+<select class="form-control">
+{%for rooms in room_no%}
+<option>{{rooms.room_no}}</option>
+{% endfor %}
+</select>
+</div>
+<!-- form -->
+<div>
+<a href="{% url 'payment' room.id %}">
+<button type="button" class="btn btn-primary pb-2 my-4 text-uppercase" data-toggle="modal"
+data-target="#servicesmodal">Make Payment</button></a>
+</div>
+</form>
+<!-- End of Book Now Modal -->
+</div>
+{% endblock content%}
