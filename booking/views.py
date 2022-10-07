@@ -6,7 +6,7 @@ from booking.forms import UserRegisterForm, ReceptionistRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django import forms
-from .models import User, Receptionist,Room,RoomStatus,RoomType
+from .models import User, Receptionist, Room, RoomStatus, RoomType
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 
 def homepage(request):
