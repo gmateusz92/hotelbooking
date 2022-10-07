@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from booking.forms import UserRegisterForm, ReceptionistRegisterForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django import forms
 from .models import User, Receptionist, Room, RoomStatus, RoomType
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
@@ -43,11 +43,11 @@ def admin_create(request):
        if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, "Your account has been created successfully! You are now able to log in")
+            messages.success(request, "Your account has been created successfully! You are now able to log in" + username)
             return redirect('admin-login')
     else:
         form = UserRegisterForm()
-    return render(request, 'hotel/register.html', {'form': form})
+    return render(request, 'hotel/index.html', {'form': form})
 
 def register_receptionist(request):
     if request.method == "POST":
@@ -60,6 +60,12 @@ def register_receptionist(request):
     else:
         form = ReceptionistRegisterForm()
     return render(request, 'hotel/register_Reception.html', {'form': form})
+
+@login_required
+def logoutuser(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('index')
 
 @login_required
 def profile(request):
