@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form>
+  <div class="input-div">
+    <label for="check_in">Check in</label>
+    <input type="datetime-local" class="form-control" id="check_in">
+  </div>
+  <div class="form-group"> <--
+    <label for="check_out">Check out</label>
+    <input type="password" class="form-control" id="check_out">
+  </div>
+  <div>
+  <button type="submit" class="btn btn-primary">Book he roomt</button>
+  </div>
+</form>
+
+{% endblock %}
